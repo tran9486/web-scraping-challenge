@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <div class="row" id="mars-news">
+      <div class="col-md-12">
+        <h3 class="heading">Latest Mars News</h3>
+        <strong>{{mars.news_title}}</strong>
+        <p>{{mars.news_p}}</p>
+      </div>
+    </div>
+
+    <div class="row" id="mars-image-facts">
+      <div class="col-md-8">
+        <h3 class="heading">Featured Mars Image</h3>
+        <img src="{{mars.featured_image_url}}">
+      </div>
+      <div class="col-md-4">
+        
+          <table border="1" class="table"> <thead> <tr style="text-align: right;"> <th></th> <th>Mars</th> <th>Earth</th> </tr> <tr> <th>Mars - Earth Comparison</th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <th>Diameter:</th> <td>6,779 km</td> <td>12,742 km</td> </tr> <tr> <th>Mass:</th> <td>6.39 × 10^23 kg</td> <td>5.97 × 10^24 kg</td> </tr> <tr> <th>Moons:</th> <td>2</td> <td>1</td> </tr> <tr> <th>Distance from Sun:</th> <td>227,943,824 km</td> <td>149,598,262 km</td> </tr> <tr> <th>Length of Year:</th> <td>687 Earth days</td> <td>365.24 days</td> </tr> <tr> <th>Temperature:</th> <td>-87 to -5 °C</td> <td>-88 to 58°C</td> </tr> </tbody> </table>
+        
+      </div>
+    </div>
+
+    <div class="row" id="mars-hemispheres-title">
+      <div class="col-md-12">
+        <h3 class="heading text-center">Mars Hemispheres</h3>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row" id="mars-hemispheres">
+      {% for hemisphere in mars.hemisphere_image_urls %}
+        <div class="col-sm-3">
+          <div class="card">
+            <img class="card-img-top" src="{{hemisphere.img_url}}" alt="Hemisphere Image">
+            <div class="card-body text-center">
+              <strong>{{hemisphere.title}}</strong>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+
+  </div>
+</body>
+
+</html>
